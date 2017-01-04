@@ -1,5 +1,5 @@
 # Docker LAMP Developer
-FROM ubuntu:precise
+FROM ubuntu:trusty
 
 MAINTAINER Vadim Lavorchuk <vadim.lavorchuk@richlodesolutions.com>
 #thanks to Rob Loach
@@ -34,8 +34,19 @@ ADD configs/php/php-setup.sh /php-setup.sh
 RUN chmod +x /php-setup.sh
 RUN /php-setup.sh
 
+#Set up debugger
+RUN echo "zend_extension=/usr/lib/php5/20131226/xdebug.so" >> /etc/php5/apache2/php.ini
+RUN echo "xdebug.remote_enable=1" >> /etc/php5/apache2/php.ini
+#Please provide your host (local machine IP) instead of 192.168.2.117
+RUN echo "xdebug.remote_host=192.168.1.224" >> /etc/php5/apache2/php.ini
+#xdebug IDE KEY
+RUN echo "xdebug.idekey=PHPSTORM" >> /etc/php5/apache2/php.ini
+#xdebug remote port
+RUN echo "xdebug.remote_port=9001" >> /etc/php5/apache2/php.ini
+
 # Configure DB (add dump to mysql)
 ADD ./dump.sql /dump.sql
+
 
 # MySQL
 RUN apt-get install -y mysql-server mysql-client php5-mysql
@@ -60,6 +71,6 @@ RUN chmod +x /phpmyadmin-setup.sh
 RUN /phpmyadmin-setup.sh
 
 # Start
-VOLUME ["/var/www/html/"]
+VOLUME ["/var/www/html"]
 EXPOSE 22 80 3306
 CMD ["supervisord", "-n"]
