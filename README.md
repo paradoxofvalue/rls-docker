@@ -1,4 +1,14 @@
 # rls-docker
+
+## Короткий todo для запуска
+* Меняем ветку ```git checkout origin/[5.3/5.5/5.6/7.0]```
+* меняем dump.sql на нужную БД (название и расположение ```./dump.sql```)
+* собираем _image_ ```sudo docker build -t test/[5.3/5.5/5.6/7.0] .```
+* запускаем ```sudo docker run -d -p 880:80 -p 222:22 -p 33306:3306 -v $(pwd)/www:/var/www/html:rw test/[5.3/5.5/5.6/7.0]```
+* работаем-работаем :yum:
+* убиваем контейнер ```sudo docker ps```, ```sudo docker kill CONTAINER_ID```
+* и по кругу :yum:
+
 ## Для начала нам нужно установить Docker (у меня Ubuntu 14.04)
 ```
 sudo apt-get update
@@ -87,3 +97,11 @@ sudo docker ps
 sudo docker kill CONTAINER_ID
 ```
 теперь у нас должен упасть сервер, проверим ```localhost:880```, _да упал =)_
+## Для сборки нового ```image```
+* Меняем ветку ```git checkout origin/[5.3/5.5/5.6/7.0]```
+* меняем dump.sql на нужную БД (название и расположение ```./dump.sql```)
+* собираем _image_ ```sudo docker build -t test/[5.3/5.5/5.6/7.0] .```
+* запускаем ```sudo docker run -d -p 880:80 -p 222:22 -p 33306:3306 -v $(pwd)/www:/var/www/html:rw test/[5.3/5.5/5.6/7.0]```
+* работаем-работаем :yum:
+* убиваем контейнер ```sudo docker ps```, ```sudo docker kill CONTAINER_ID```
+* и по кругу :yum:
