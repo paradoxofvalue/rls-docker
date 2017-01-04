@@ -1,6 +1,8 @@
 # Docker LAMP Developer
 FROM ubuntu:precise
-MAINTAINER Rob Loach <robloach@gmail.com>
+
+MAINTAINER Vadim Lavorchuk <vadim.lavorchuk@richlodesolutions.com>
+#thanks to Rob Loach
 
 # Environment Variables
 ENV DEBIAN_FRONTEND noninteractive
@@ -34,7 +36,6 @@ RUN /php-setup.sh
 
 # Configure DB (add dump to mysql)
 ADD ./dump.sql /dump.sql
-#RUN mysql -u root -proot sugarcrm < dump.sql
 
 # MySQL
 RUN apt-get install -y mysql-server mysql-client php5-mysql
@@ -57,8 +58,6 @@ RUN chmod 755 /etc/phpmyadmin/conf.d/config.inc.php
 ADD configs/phpmyadmin/phpmyadmin-setup.sh /phpmyadmin-setup.sh
 RUN chmod +x /phpmyadmin-setup.sh
 RUN /phpmyadmin-setup.sh
-
-
 
 # Start
 VOLUME ["/var/www/html/"]
