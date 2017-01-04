@@ -1,7 +1,8 @@
 # Docker LAMP Developer
 FROM ubuntu:latest
 
-MAINTAINER Rob Loach <robloach@gmail.com>
+MAINTAINER Vadim Lavorchuk <vadim.lavorchuk@richlodesolutions.com>
+#thanks to Rob Loach
 
 # Environment Variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -11,7 +12,6 @@ RUN apt-get update -y
 #RUN apt-get upgrade -y
 RUN apt-get install -y supervisor git debconf-utils
 RUN mkdir -p /var/log/supervisor
-
 
 # SSH
 RUN apt-get install -y openssh-server
@@ -27,7 +27,6 @@ ADD configs/apache2/apache_default /etc/apache2/sites-available/000-default.conf
 ADD configs/apache2/supervisor.conf /etc/supervisor/conf.d/apache2.conf
 RUN /apache2-setup.sh
 
-
 # PHP
 RUN apt-get update
 RUN apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-json php7.0-cli php7.0-curl curl php7.0-mcrypt php-xdebug mcrypt libmcrypt-dev php-xdebug
@@ -41,7 +40,6 @@ RUN /php-setup.sh
 
 # Configure DB (add dump to mysql)
 ADD ./dump.sql /dump.sql
-#RUN mysql -u root -proot sugarcrm < dump.sql
 
 # MySQL
 RUN apt-get install -y mysql-server mysql-client php-mysql
@@ -64,8 +62,6 @@ RUN chmod 755 /etc/phpmyadmin/conf.d/config.inc.php
 ADD configs/phpmyadmin/phpmyadmin-setup.sh /phpmyadmin-setup.sh
 RUN chmod +x /phpmyadmin-setup.sh
 RUN /phpmyadmin-setup.sh
-
-
 
 # Start
 VOLUME ["/var/www/html/"]
