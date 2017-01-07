@@ -1,5 +1,8 @@
 #!/bin/bash
-
+apt-get install -y python-software-properties
+add-apt-repository -y ppa:ondrej/php5-oldstable
+apt-get update
+apt-get install -y php5
 # Enable PHP modules
 php5enmod mcrypt
 
