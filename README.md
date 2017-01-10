@@ -11,7 +11,7 @@
 
 ## Для работы в консоле (внутри docker container\`а)
 * ```sudo docker ps```
-* ```sudo docker exec -i -t CONTAINER_ID /bin/bash/```
+* ```sudo docker exec -i -t CONTAINER_ID /bin/bash```
 
 
 ## Для начала нам нужно установить Docker (у меня Ubuntu 14.04)
