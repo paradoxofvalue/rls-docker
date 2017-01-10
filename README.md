@@ -63,11 +63,11 @@ git clone https://github.com/paradoxofvalue/rls-docker.git
 есть несколько веток c разными версиями php: ```5.3```, ```5.4```, ```5.5```, ```5.6```, ```7.0```
 если нам нужен, например php5.3
 ```
-git checkout origin/5.3
+git checkout 5.3
 ```
 если нам нужен, например php5.5
 ```
-git checkout origin/5.5
+git checkout 5.5
 ```
 и тд.
 
@@ -110,7 +110,7 @@ sudo docker kill CONTAINER_ID
 ```
 теперь у нас должен упасть сервер, проверим ```localhost:880```, _да упал =)_
 ## Для сборки нового ```image```
-* Меняем ветку ```git checkout origin/[5.3/5.5/5.6/7.0]```
+* Меняем ветку ```git checkout [5.3/5.5/5.6/7.0]```
 * меняем dump.sql на нужную БД (название и расположение ```./dump.sql```)
 * собираем _image_ ```sudo docker build -t test/[5.3/5.5/5.6/7.0] .```
 * запускаем ```sudo docker run -d -p 880:80 -p 222:22 -p 33306:3306 -v $(pwd)/www:/var/www/html:rw test/[5.3/5.5/5.6/7.0]```
