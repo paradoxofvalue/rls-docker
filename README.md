@@ -76,8 +76,9 @@ git checkout origin/5.5
 > ###!!!перед тем как собирать _image_, мы должны переместить нашу БД и переименовать ее в `dump.sql`!!!
 
 > для корректной работы xdebug нужно немного поправить ```configs/php/php.ini```, листаем в самый низ и находим там ```xdebug.remote_host=your_local_ip_address```, чтобы достать ваш ```your_local_ip_address```:
-* ```ifconfig eth0``` - берем ```inet addr:your_local_ip_address``` и копируем
-* вставляем вместо того значения
+* ```ifconfig eth0``` - берем ```inet addr:your_local_ip_address```
+* копируем ```ctrl+shift+c```
+* заменяем
 
 _в нашем случае, сейчас мы хотим работать с **php5.3**_
 ```
