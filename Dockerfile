@@ -1,7 +1,8 @@
 # Docker LAMP Developer
-FROM ubuntu:latest
+FROM ubuntu:xenial
 
-MAINTAINER Rob Loach <robloach@gmail.com>
+MAINTAINER Vadim Lavorchuk <vadim.lavorchuk@ricklodesolutions.com>
+#thanks to Rob Loach
 
 # Environment Variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -28,6 +29,7 @@ ADD configs/apache2/supervisor.conf /etc/supervisor/conf.d/apache2.conf
 RUN /apache2-setup.sh
 
 # PPA for PHP
+RUN apt-get update
 RUN apt-get -y install software-properties-common
 RUN apt-get -y install python-software-properties
 RUN add-apt-repository ppa:ondrej/php
