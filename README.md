@@ -8,6 +8,7 @@
 * работаем-работаем :yum:
 * убиваем контейнер ```sudo docker ps```, ```sudo docker kill CONTAINER_ID```
 * и по кругу :yum:
+
 ## Для работы в консоле (внутри docker container\`а)
 * ```sudo docker ps```
 * ```sudo docker exec -i -t CONTAINER_ID /bin/bash/```
